@@ -1,0 +1,6 @@
+framework module Pods_ProtoConnect_ProtoConnectUITests {
+  umbrella header "Pods-ProtoConnect-ProtoConnectUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

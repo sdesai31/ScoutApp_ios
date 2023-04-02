@@ -1,0 +1,1002 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02135D1329D77EE00061E51D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1229D77EE00061E51D /* FirebaseAnalytics */; };
+		02135D1529D77EE00061E51D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1429D77EE00061E51D /* FirebaseAnalyticsSwift */; };
+		02135D1729D77EE00061E51D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1629D77EE00061E51D /* FirebaseAuth */; };
+		02135D1929D77EE00061E51D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1829D77EE00061E51D /* FirebaseDatabase */; };
+		02135D1B29D77EE00061E51D /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1A29D77EE00061E51D /* FirebaseDatabaseSwift */; };
+		02135D1D29D77EE00061E51D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1C29D77EE00061E51D /* FirebaseFirestore */; };
+		02135D1F29D77EE00061E51D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1E29D77EE00061E51D /* FirebaseFirestoreSwift */; };
+		022F0CB629DA266F00B84C24 /* IrregularGradient in Frameworks */ = {isa = PBXBuildFile; productRef = 022F0CB529DA266F00B84C24 /* IrregularGradient */; };
+		023A028F29CE2A00007935CA /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = 023A028E29CE2A00007935CA /* Neumorphic */; };
+		023A029129D00F8A007935CA /* ProtoFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023A029029D00F8A007935CA /* ProtoFirebase.swift */; };
+		02405DE529D7807400FFEB4E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 02405DE429D7807400FFEB4E /* GoogleSignIn */; };
+		02405DE729D7807400FFEB4E /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02405DE629D7807400FFEB4E /* GoogleSignInSwift */; };
+		02405DE929D780D800FFEB4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02405DE829D780D800FFEB4E /* GoogleService-Info.plist */; };
+		02405DEB29D79D8000FFEB4E /* ProtoTeamJoinCodeOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02405DEA29D79D8000FFEB4E /* ProtoTeamJoinCodeOnboard.swift */; };
+		02405DED29D87CAC00FFEB4E /* ScoutingTeamLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02405DEC29D87CAC00FFEB4E /* ScoutingTeamLookup.swift */; };
+		02405DEF29D96DB100FFEB4E /* ProtoConnectSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02405DEE29D96DB000FFEB4E /* ProtoConnectSettings.swift */; };
+		02405DF129D9E56300FFEB4E /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02405DF029D9E56300FFEB4E /* TeamsView.swift */; };
+		025A293E29CE0F9D007223C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A293D29CE0F9D007223C0 /* AppDelegate.swift */; };
+		025A294029CE0F9D007223C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A293F29CE0F9D007223C0 /* SceneDelegate.swift */; };
+		025A294229CE0F9D007223C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A294129CE0F9D007223C0 /* ViewController.swift */; };
+		025A294529CE0F9D007223C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025A294329CE0F9D007223C0 /* Main.storyboard */; };
+		025A294729CE0F9F007223C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 025A294629CE0F9F007223C0 /* Assets.xcassets */; };
+		025A294A29CE0F9F007223C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025A294829CE0F9F007223C0 /* LaunchScreen.storyboard */; };
+		025A295529CE0F9F007223C0 /* ProtoConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A295429CE0F9F007223C0 /* ProtoConnectTests.swift */; };
+		025A295F29CE0F9F007223C0 /* ProtoConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A295E29CE0F9F007223C0 /* ProtoConnectUITests.swift */; };
+		025A296129CE0F9F007223C0 /* ProtoConnectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025A296029CE0F9F007223C0 /* ProtoConnectUITestsLaunchTests.swift */; };
+		025D95DA29CE14CA00C67722 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025D95D929CE14CA00C67722 /* LoginView.swift */; };
+		025D95DD29CE150900C67722 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 025D95DC29CE150900C67722 /* BottomBar-SwiftUI */; };
+		025D95DF29CE151800C67722 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025D95DE29CE151800C67722 /* HomeView.swift */; };
+		02619F7E29D20B4B00308E5C /* RegionalSubPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02619F7D29D20B4B00308E5C /* RegionalSubPageView.swift */; };
+		02619F8129D2133600308E5C /* FancyScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 02619F8029D2133600308E5C /* FancyScrollView */; };
+		02619F8329D3717200308E5C /* RegionalSubPageScoutingDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02619F8229D3717200308E5C /* RegionalSubPageScoutingDataView.swift */; };
+		02AB5EF129D018370020E3E8 /* LoginOnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AB5EF029D018370020E3E8 /* LoginOnboardView.swift */; };
+		02AB5EF329D019640020E3E8 /* ProtoLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AB5EF229D019640020E3E8 /* ProtoLookup.swift */; };
+		02AB5EF629D0C67C0020E3E8 /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 02AB5EF529D0C67C0020E3E8 /* SimpleToast */; };
+		02F33EC129D13D7900312CB3 /* HomeSubpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F33EC029D13D7900312CB3 /* HomeSubpage.swift */; };
+		02F33EC329D13F9700312CB3 /* ScoutingSubpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F33EC229D13F9700312CB3 /* ScoutingSubpage.swift */; };
+		02F33EC829D201C000312CB3 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 02F33EC729D201C000312CB3 /* ActivityIndicatorView */; };
+		02F33ECB29D201E400312CB3 /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 02F33ECA29D201E400312CB3 /* ScalingHeaderScrollView */; };
+		592CA35E3513CBD8A4F9A296 /* Pods_ProtoConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A112C0F04083E70F65F189D3 /* Pods_ProtoConnectTests.framework */; };
+		B73C7377CD52158666AF66CF /* Pods_ProtoConnect_ProtoConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4094028403CED72D2C0FC748 /* Pods_ProtoConnect_ProtoConnectUITests.framework */; };
+		EC0956AC04AABF8E2867B3EE /* Pods_ProtoConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B875637F165C1ACB042EF299 /* Pods_ProtoConnect.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		025A295129CE0F9F007223C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 025A293229CE0F9D007223C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 025A293929CE0F9D007223C0;
+			remoteInfo = ProtoConnect;
+		};
+		025A295B29CE0F9F007223C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 025A293229CE0F9D007223C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 025A293929CE0F9D007223C0;
+			remoteInfo = ProtoConnect;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		023A029029D00F8A007935CA /* ProtoFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoFirebase.swift; sourceTree = "<group>"; };
+		02405DE829D780D800FFEB4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02405DEA29D79D8000FFEB4E /* ProtoTeamJoinCodeOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoTeamJoinCodeOnboard.swift; sourceTree = "<group>"; };
+		02405DEC29D87CAC00FFEB4E /* ScoutingTeamLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutingTeamLookup.swift; sourceTree = "<group>"; };
+		02405DEE29D96DB000FFEB4E /* ProtoConnectSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoConnectSettings.swift; sourceTree = "<group>"; };
+		02405DF029D9E56300FFEB4E /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
+		025A293A29CE0F9D007223C0 /* ProtoConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProtoConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		025A293D29CE0F9D007223C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		025A293F29CE0F9D007223C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		025A294129CE0F9D007223C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		025A294429CE0F9D007223C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		025A294629CE0F9F007223C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		025A294929CE0F9F007223C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		025A294B29CE0F9F007223C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		025A295029CE0F9F007223C0 /* ProtoConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProtoConnectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		025A295429CE0F9F007223C0 /* ProtoConnectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoConnectTests.swift; sourceTree = "<group>"; };
+		025A295A29CE0F9F007223C0 /* ProtoConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProtoConnectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		025A295E29CE0F9F007223C0 /* ProtoConnectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoConnectUITests.swift; sourceTree = "<group>"; };
+		025A296029CE0F9F007223C0 /* ProtoConnectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoConnectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		025D95D929CE14CA00C67722 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		025D95DE29CE151800C67722 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		02619F7D29D20B4B00308E5C /* RegionalSubPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalSubPageView.swift; sourceTree = "<group>"; };
+		02619F8229D3717200308E5C /* RegionalSubPageScoutingDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalSubPageScoutingDataView.swift; sourceTree = "<group>"; };
+		02AB5EF029D018370020E3E8 /* LoginOnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOnboardView.swift; sourceTree = "<group>"; };
+		02AB5EF229D019640020E3E8 /* ProtoLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoLookup.swift; sourceTree = "<group>"; };
+		02F33EC029D13D7900312CB3 /* HomeSubpage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSubpage.swift; sourceTree = "<group>"; };
+		02F33EC229D13F9700312CB3 /* ScoutingSubpage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoutingSubpage.swift; sourceTree = "<group>"; };
+		4094028403CED72D2C0FC748 /* Pods_ProtoConnect_ProtoConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProtoConnect_ProtoConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41036605EE4E5007DC8DA009 /* Pods-ProtoConnectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnectTests.debug.xcconfig"; path = "Target Support Files/Pods-ProtoConnectTests/Pods-ProtoConnectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6793ACAA1D57041024E18067 /* Pods-ProtoConnectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnectTests.release.xcconfig"; path = "Target Support Files/Pods-ProtoConnectTests/Pods-ProtoConnectTests.release.xcconfig"; sourceTree = "<group>"; };
+		8D1A2FE24BDAB0AAD695D0DF /* Pods-ProtoConnect-ProtoConnectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnect-ProtoConnectUITests.release.xcconfig"; path = "Target Support Files/Pods-ProtoConnect-ProtoConnectUITests/Pods-ProtoConnect-ProtoConnectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9A5B3DF3ED5D5385E470FA2D /* Pods-ProtoConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnect.debug.xcconfig"; path = "Target Support Files/Pods-ProtoConnect/Pods-ProtoConnect.debug.xcconfig"; sourceTree = "<group>"; };
+		A112C0F04083E70F65F189D3 /* Pods_ProtoConnectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProtoConnectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A77A70D29450A7FA2AFB8F45 /* Pods-ProtoConnect-ProtoConnectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnect-ProtoConnectUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProtoConnect-ProtoConnectUITests/Pods-ProtoConnect-ProtoConnectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6646B9A941949605078E2F6 /* Pods-ProtoConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnect.release.xcconfig"; path = "Target Support Files/Pods-ProtoConnect/Pods-ProtoConnect.release.xcconfig"; sourceTree = "<group>"; };
+		B875637F165C1ACB042EF299 /* Pods_ProtoConnect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProtoConnect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		025A293729CE0F9D007223C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02F33EC829D201C000312CB3 /* ActivityIndicatorView in Frameworks */,
+				02405DE529D7807400FFEB4E /* GoogleSignIn in Frameworks */,
+				02AB5EF629D0C67C0020E3E8 /* SimpleToast in Frameworks */,
+				EC0956AC04AABF8E2867B3EE /* Pods_ProtoConnect.framework in Frameworks */,
+				025D95DD29CE150900C67722 /* BottomBar-SwiftUI in Frameworks */,
+				02135D1529D77EE00061E51D /* FirebaseAnalyticsSwift in Frameworks */,
+				022F0CB629DA266F00B84C24 /* IrregularGradient in Frameworks */,
+				02135D1F29D77EE00061E51D /* FirebaseFirestoreSwift in Frameworks */,
+				023A028F29CE2A00007935CA /* Neumorphic in Frameworks */,
+				02135D1B29D77EE00061E51D /* FirebaseDatabaseSwift in Frameworks */,
+				02405DE729D7807400FFEB4E /* GoogleSignInSwift in Frameworks */,
+				02135D1929D77EE00061E51D /* FirebaseDatabase in Frameworks */,
+				02F33ECB29D201E400312CB3 /* ScalingHeaderScrollView in Frameworks */,
+				02135D1729D77EE00061E51D /* FirebaseAuth in Frameworks */,
+				02619F8129D2133600308E5C /* FancyScrollView in Frameworks */,
+				02135D1329D77EE00061E51D /* FirebaseAnalytics in Frameworks */,
+				02135D1D29D77EE00061E51D /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		025A294D29CE0F9F007223C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				592CA35E3513CBD8A4F9A296 /* Pods_ProtoConnectTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		025A295729CE0F9F007223C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B73C7377CD52158666AF66CF /* Pods_ProtoConnect_ProtoConnectUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		025A293129CE0F9D007223C0 = {
+			isa = PBXGroup;
+			children = (
+				025A293C29CE0F9D007223C0 /* ProtoConnect */,
+				025A295329CE0F9F007223C0 /* ProtoConnectTests */,
+				025A295D29CE0F9F007223C0 /* ProtoConnectUITests */,
+				025A293B29CE0F9D007223C0 /* Products */,
+				8557FC68EC892A187584929B /* Pods */,
+				BDDC08CD4BF64DE730973274 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		025A293B29CE0F9D007223C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				025A293A29CE0F9D007223C0 /* ProtoConnect.app */,
+				025A295029CE0F9F007223C0 /* ProtoConnectTests.xctest */,
+				025A295A29CE0F9F007223C0 /* ProtoConnectUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		025A293C29CE0F9D007223C0 /* ProtoConnect */ = {
+			isa = PBXGroup;
+			children = (
+				025A293D29CE0F9D007223C0 /* AppDelegate.swift */,
+				025A293F29CE0F9D007223C0 /* SceneDelegate.swift */,
+				025A294129CE0F9D007223C0 /* ViewController.swift */,
+				025D95D929CE14CA00C67722 /* LoginView.swift */,
+				023A029029D00F8A007935CA /* ProtoFirebase.swift */,
+				02AB5EF229D019640020E3E8 /* ProtoLookup.swift */,
+				02405DEC29D87CAC00FFEB4E /* ScoutingTeamLookup.swift */,
+				02405DEE29D96DB000FFEB4E /* ProtoConnectSettings.swift */,
+				02405DF029D9E56300FFEB4E /* TeamsView.swift */,
+				025D95DE29CE151800C67722 /* HomeView.swift */,
+				02F33EC029D13D7900312CB3 /* HomeSubpage.swift */,
+				02F33EC229D13F9700312CB3 /* ScoutingSubpage.swift */,
+				02619F7D29D20B4B00308E5C /* RegionalSubPageView.swift */,
+				02619F8229D3717200308E5C /* RegionalSubPageScoutingDataView.swift */,
+				02AB5EF029D018370020E3E8 /* LoginOnboardView.swift */,
+				02405DEA29D79D8000FFEB4E /* ProtoTeamJoinCodeOnboard.swift */,
+				02405DE829D780D800FFEB4E /* GoogleService-Info.plist */,
+				025A294329CE0F9D007223C0 /* Main.storyboard */,
+				025A294629CE0F9F007223C0 /* Assets.xcassets */,
+				025A294829CE0F9F007223C0 /* LaunchScreen.storyboard */,
+				025A294B29CE0F9F007223C0 /* Info.plist */,
+			);
+			path = ProtoConnect;
+			sourceTree = "<group>";
+		};
+		025A295329CE0F9F007223C0 /* ProtoConnectTests */ = {
+			isa = PBXGroup;
+			children = (
+				025A295429CE0F9F007223C0 /* ProtoConnectTests.swift */,
+			);
+			path = ProtoConnectTests;
+			sourceTree = "<group>";
+		};
+		025A295D29CE0F9F007223C0 /* ProtoConnectUITests */ = {
+			isa = PBXGroup;
+			children = (
+				025A295E29CE0F9F007223C0 /* ProtoConnectUITests.swift */,
+				025A296029CE0F9F007223C0 /* ProtoConnectUITestsLaunchTests.swift */,
+			);
+			path = ProtoConnectUITests;
+			sourceTree = "<group>";
+		};
+		8557FC68EC892A187584929B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A5B3DF3ED5D5385E470FA2D /* Pods-ProtoConnect.debug.xcconfig */,
+				B6646B9A941949605078E2F6 /* Pods-ProtoConnect.release.xcconfig */,
+				A77A70D29450A7FA2AFB8F45 /* Pods-ProtoConnect-ProtoConnectUITests.debug.xcconfig */,
+				8D1A2FE24BDAB0AAD695D0DF /* Pods-ProtoConnect-ProtoConnectUITests.release.xcconfig */,
+				41036605EE4E5007DC8DA009 /* Pods-ProtoConnectTests.debug.xcconfig */,
+				6793ACAA1D57041024E18067 /* Pods-ProtoConnectTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BDDC08CD4BF64DE730973274 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B875637F165C1ACB042EF299 /* Pods_ProtoConnect.framework */,
+				4094028403CED72D2C0FC748 /* Pods_ProtoConnect_ProtoConnectUITests.framework */,
+				A112C0F04083E70F65F189D3 /* Pods_ProtoConnectTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		025A293929CE0F9D007223C0 /* ProtoConnect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 025A296429CE0F9F007223C0 /* Build configuration list for PBXNativeTarget "ProtoConnect" */;
+			buildPhases = (
+				8BF92B3C589F9282B9B8CC72 /* [CP] Check Pods Manifest.lock */,
+				025A293629CE0F9D007223C0 /* Sources */,
+				025A293729CE0F9D007223C0 /* Frameworks */,
+				025A293829CE0F9D007223C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProtoConnect;
+			packageProductDependencies = (
+				025D95DC29CE150900C67722 /* BottomBar-SwiftUI */,
+				023A028E29CE2A00007935CA /* Neumorphic */,
+				02AB5EF529D0C67C0020E3E8 /* SimpleToast */,
+				02F33EC729D201C000312CB3 /* ActivityIndicatorView */,
+				02F33ECA29D201E400312CB3 /* ScalingHeaderScrollView */,
+				02619F8029D2133600308E5C /* FancyScrollView */,
+				02135D1229D77EE00061E51D /* FirebaseAnalytics */,
+				02135D1429D77EE00061E51D /* FirebaseAnalyticsSwift */,
+				02135D1629D77EE00061E51D /* FirebaseAuth */,
+				02135D1829D77EE00061E51D /* FirebaseDatabase */,
+				02135D1A29D77EE00061E51D /* FirebaseDatabaseSwift */,
+				02135D1C29D77EE00061E51D /* FirebaseFirestore */,
+				02135D1E29D77EE00061E51D /* FirebaseFirestoreSwift */,
+				02405DE429D7807400FFEB4E /* GoogleSignIn */,
+				02405DE629D7807400FFEB4E /* GoogleSignInSwift */,
+				022F0CB529DA266F00B84C24 /* IrregularGradient */,
+			);
+			productName = ProtoConnect;
+			productReference = 025A293A29CE0F9D007223C0 /* ProtoConnect.app */;
+			productType = "com.apple.product-type.application";
+		};
+		025A294F29CE0F9F007223C0 /* ProtoConnectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 025A296729CE0F9F007223C0 /* Build configuration list for PBXNativeTarget "ProtoConnectTests" */;
+			buildPhases = (
+				2A77559B4549FD000F2F3519 /* [CP] Check Pods Manifest.lock */,
+				025A294C29CE0F9F007223C0 /* Sources */,
+				025A294D29CE0F9F007223C0 /* Frameworks */,
+				025A294E29CE0F9F007223C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				025A295229CE0F9F007223C0 /* PBXTargetDependency */,
+			);
+			name = ProtoConnectTests;
+			productName = ProtoConnectTests;
+			productReference = 025A295029CE0F9F007223C0 /* ProtoConnectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		025A295929CE0F9F007223C0 /* ProtoConnectUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 025A296A29CE0F9F007223C0 /* Build configuration list for PBXNativeTarget "ProtoConnectUITests" */;
+			buildPhases = (
+				F2B4B8D5EE37562A4BBBAFED /* [CP] Check Pods Manifest.lock */,
+				025A295629CE0F9F007223C0 /* Sources */,
+				025A295729CE0F9F007223C0 /* Frameworks */,
+				025A295829CE0F9F007223C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				025A295C29CE0F9F007223C0 /* PBXTargetDependency */,
+			);
+			name = ProtoConnectUITests;
+			productName = ProtoConnectUITests;
+			productReference = 025A295A29CE0F9F007223C0 /* ProtoConnectUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		025A293229CE0F9D007223C0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					025A293929CE0F9D007223C0 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					025A294F29CE0F9F007223C0 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 025A293929CE0F9D007223C0;
+					};
+					025A295929CE0F9F007223C0 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 025A293929CE0F9D007223C0;
+					};
+				};
+			};
+			buildConfigurationList = 025A293529CE0F9D007223C0 /* Build configuration list for PBXProject "ProtoConnect" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 025A293129CE0F9D007223C0;
+			packageReferences = (
+				025D95DB29CE150900C67722 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
+				023A028D29CE2A00007935CA /* XCRemoteSwiftPackageReference "neumorphic" */,
+				02AB5EF429D0C67C0020E3E8 /* XCRemoteSwiftPackageReference "SimpleToast" */,
+				02F33EC629D201C000312CB3 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
+				02F33EC929D201E400312CB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
+				02619F7F29D2133600308E5C /* XCRemoteSwiftPackageReference "FancyScrollView" */,
+				02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				02405DE329D7807400FFEB4E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				022F0CB429DA266F00B84C24 /* XCRemoteSwiftPackageReference "IrregularGradient" */,
+			);
+			productRefGroup = 025A293B29CE0F9D007223C0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				025A293929CE0F9D007223C0 /* ProtoConnect */,
+				025A294F29CE0F9F007223C0 /* ProtoConnectTests */,
+				025A295929CE0F9F007223C0 /* ProtoConnectUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		025A293829CE0F9D007223C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025A294A29CE0F9F007223C0 /* LaunchScreen.storyboard in Resources */,
+				025A294729CE0F9F007223C0 /* Assets.xcassets in Resources */,
+				02405DE929D780D800FFEB4E /* GoogleService-Info.plist in Resources */,
+				025A294529CE0F9D007223C0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		025A294E29CE0F9F007223C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		025A295829CE0F9F007223C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A77559B4549FD000F2F3519 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProtoConnectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BF92B3C589F9282B9B8CC72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProtoConnect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2B4B8D5EE37562A4BBBAFED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProtoConnect-ProtoConnectUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		025A293629CE0F9D007223C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025A294229CE0F9D007223C0 /* ViewController.swift in Sources */,
+				02405DF129D9E56300FFEB4E /* TeamsView.swift in Sources */,
+				023A029129D00F8A007935CA /* ProtoFirebase.swift in Sources */,
+				02AB5EF329D019640020E3E8 /* ProtoLookup.swift in Sources */,
+				02405DEF29D96DB100FFEB4E /* ProtoConnectSettings.swift in Sources */,
+				025A293E29CE0F9D007223C0 /* AppDelegate.swift in Sources */,
+				02F33EC129D13D7900312CB3 /* HomeSubpage.swift in Sources */,
+				025D95DA29CE14CA00C67722 /* LoginView.swift in Sources */,
+				02AB5EF129D018370020E3E8 /* LoginOnboardView.swift in Sources */,
+				02F33EC329D13F9700312CB3 /* ScoutingSubpage.swift in Sources */,
+				025D95DF29CE151800C67722 /* HomeView.swift in Sources */,
+				02405DEB29D79D8000FFEB4E /* ProtoTeamJoinCodeOnboard.swift in Sources */,
+				02619F8329D3717200308E5C /* RegionalSubPageScoutingDataView.swift in Sources */,
+				025A294029CE0F9D007223C0 /* SceneDelegate.swift in Sources */,
+				02619F7E29D20B4B00308E5C /* RegionalSubPageView.swift in Sources */,
+				02405DED29D87CAC00FFEB4E /* ScoutingTeamLookup.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		025A294C29CE0F9F007223C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025A295529CE0F9F007223C0 /* ProtoConnectTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		025A295629CE0F9F007223C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025A296129CE0F9F007223C0 /* ProtoConnectUITestsLaunchTests.swift in Sources */,
+				025A295F29CE0F9F007223C0 /* ProtoConnectUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		025A295229CE0F9F007223C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 025A293929CE0F9D007223C0 /* ProtoConnect */;
+			targetProxy = 025A295129CE0F9F007223C0 /* PBXContainerItemProxy */;
+		};
+		025A295C29CE0F9F007223C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 025A293929CE0F9D007223C0 /* ProtoConnect */;
+			targetProxy = 025A295B29CE0F9F007223C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		025A294329CE0F9D007223C0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				025A294429CE0F9D007223C0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		025A294829CE0F9F007223C0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				025A294929CE0F9F007223C0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		025A296229CE0F9F007223C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		025A296329CE0F9F007223C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		025A296529CE0F9F007223C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A5B3DF3ED5D5385E470FA2D /* Pods-ProtoConnect.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LU5L9YLQSG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProtoConnect/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AKRSApps.ProtoConnect123;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		025A296629CE0F9F007223C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6646B9A941949605078E2F6 /* Pods-ProtoConnect.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LU5L9YLQSG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProtoConnect/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AKRSApps.ProtoConnect123;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		025A296829CE0F9F007223C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41036605EE4E5007DC8DA009 /* Pods-ProtoConnectTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LU5L9YLQSG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AKRSApps.ProtoConnectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProtoConnect.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ProtoConnect";
+			};
+			name = Debug;
+		};
+		025A296929CE0F9F007223C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6793ACAA1D57041024E18067 /* Pods-ProtoConnectTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LU5L9YLQSG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AKRSApps.ProtoConnectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProtoConnect.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ProtoConnect";
+			};
+			name = Release;
+		};
+		025A296B29CE0F9F007223C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A77A70D29450A7FA2AFB8F45 /* Pods-ProtoConnect-ProtoConnectUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LU5L9YLQSG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AKRSApps.ProtoConnectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ProtoConnect;
+			};
+			name = Debug;
+		};
+		025A296C29CE0F9F007223C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D1A2FE24BDAB0AAD695D0DF /* Pods-ProtoConnect-ProtoConnectUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LU5L9YLQSG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AKRSApps.ProtoConnectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ProtoConnect;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		025A293529CE0F9D007223C0 /* Build configuration list for PBXProject "ProtoConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				025A296229CE0F9F007223C0 /* Debug */,
+				025A296329CE0F9F007223C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		025A296429CE0F9F007223C0 /* Build configuration list for PBXNativeTarget "ProtoConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				025A296529CE0F9F007223C0 /* Debug */,
+				025A296629CE0F9F007223C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		025A296729CE0F9F007223C0 /* Build configuration list for PBXNativeTarget "ProtoConnectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				025A296829CE0F9F007223C0 /* Debug */,
+				025A296929CE0F9F007223C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		025A296A29CE0F9F007223C0 /* Build configuration list for PBXNativeTarget "ProtoConnectUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				025A296B29CE0F9F007223C0 /* Debug */,
+				025A296C29CE0F9F007223C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		022F0CB429DA266F00B84C24 /* XCRemoteSwiftPackageReference "IrregularGradient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/IrregularGradient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		023A028D29CE2A00007935CA /* XCRemoteSwiftPackageReference "neumorphic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/costachung/neumorphic.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		02405DE329D7807400FFEB4E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		025D95DB29CE150900C67722 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		02619F7F29D2133600308E5C /* XCRemoteSwiftPackageReference "FancyScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nerdsupremacist/FancyScrollView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+		02AB5EF429D0C67C0020E3E8 /* XCRemoteSwiftPackageReference "SimpleToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sanzaru/SimpleToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.2;
+			};
+		};
+		02F33EC629D201C000312CB3 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		02F33EC929D201E400312CB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ScalingHeaderScrollView.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		02135D1229D77EE00061E51D /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		02135D1429D77EE00061E51D /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		02135D1629D77EE00061E51D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		02135D1829D77EE00061E51D /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		02135D1A29D77EE00061E51D /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		02135D1C29D77EE00061E51D /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		02135D1E29D77EE00061E51D /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		022F0CB529DA266F00B84C24 /* IrregularGradient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 022F0CB429DA266F00B84C24 /* XCRemoteSwiftPackageReference "IrregularGradient" */;
+			productName = IrregularGradient;
+		};
+		023A028E29CE2A00007935CA /* Neumorphic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 023A028D29CE2A00007935CA /* XCRemoteSwiftPackageReference "neumorphic" */;
+			productName = Neumorphic;
+		};
+		02405DE429D7807400FFEB4E /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02405DE329D7807400FFEB4E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		02405DE629D7807400FFEB4E /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02405DE329D7807400FFEB4E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		025D95DC29CE150900C67722 /* BottomBar-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 025D95DB29CE150900C67722 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
+			productName = "BottomBar-SwiftUI";
+		};
+		02619F8029D2133600308E5C /* FancyScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02619F7F29D2133600308E5C /* XCRemoteSwiftPackageReference "FancyScrollView" */;
+			productName = FancyScrollView;
+		};
+		02AB5EF529D0C67C0020E3E8 /* SimpleToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02AB5EF429D0C67C0020E3E8 /* XCRemoteSwiftPackageReference "SimpleToast" */;
+			productName = SimpleToast;
+		};
+		02F33EC729D201C000312CB3 /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02F33EC629D201C000312CB3 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
+		};
+		02F33ECA29D201E400312CB3 /* ScalingHeaderScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02F33EC929D201E400312CB3 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
+			productName = ScalingHeaderScrollView;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 025A293229CE0F9D007223C0 /* Project object */;
+}
