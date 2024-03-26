@@ -94,10 +94,12 @@ struct RegionalMatchView: View {
     
     var body: some View {
         
-        if let blueAlliance = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["team_keys"] as? [String], let redAlliance = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["team_keys"] as? [String], let blueAllianceScore = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["score"] as? Int, let redAllianceScore = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["score"] as? Int, let matchKey = ((matchInfo["key"] as? String)), let regionalKey = ((matchInfo["event_key"] as? String)) {
+        if let blueAlliance = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["team_keys"] as? [String], let redAlliance = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["team_keys"] as? [String], let blueAllianceScore = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["score"] as? Int, let redAllianceScore = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["score"] as? Int, let regionalKey = ((matchInfo["event_key"] as? String)) {
             
             NavigationLink(destination: {
-                RegionalSubPageScoutingDataView(redTeams: redAlliance, blueTeams: blueAlliance, regionalKey: regionalKey, matchKey: matchKey)
+                if let matchNumber = (((matchInfo["match_number"])) as? Int) {
+                    RegionalSubPageScoutingDataView(redTeams: redAlliance, blueTeams: blueAlliance, regionalKey: regionalKey, matchNumber: String(matchNumber))
+                }
             }, label: {
                 VStack {
                     if let matchNumber = ((matchInfo["match_number"] as? Int)) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02051DB22BB1229700518568 /* ProtoSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02051DB12BB1229700518568 /* ProtoSheets.swift */; };
 		02135D1329D77EE00061E51D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1229D77EE00061E51D /* FirebaseAnalytics */; };
 		02135D1529D77EE00061E51D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1429D77EE00061E51D /* FirebaseAnalyticsSwift */; };
 		02135D1729D77EE00061E51D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 02135D1629D77EE00061E51D /* FirebaseAuth */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02051DB12BB1229700518568 /* ProtoSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoSheets.swift; sourceTree = "<group>"; };
 		023A029029D00F8A007935CA /* ProtoFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoFirebase.swift; sourceTree = "<group>"; };
 		02405DE829D780D800FFEB4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02405DEA29D79D8000FFEB4E /* ProtoTeamJoinCodeOnboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoTeamJoinCodeOnboard.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				025A294129CE0F9D007223C0 /* ViewController.swift */,
 				025D95D929CE14CA00C67722 /* LoginView.swift */,
 				023A029029D00F8A007935CA /* ProtoFirebase.swift */,
+				02051DB12BB1229700518568 /* ProtoSheets.swift */,
 				02AB5EF229D019640020E3E8 /* ProtoLookup.swift */,
 				02405DEC29D87CAC00FFEB4E /* ScoutingTeamLookup.swift */,
 				02405DEE29D96DB000FFEB4E /* ProtoConnectSettings.swift */,
@@ -484,6 +487,7 @@
 				025D95DA29CE14CA00C67722 /* LoginView.swift in Sources */,
 				02AB5EF129D018370020E3E8 /* LoginOnboardView.swift in Sources */,
 				02F33EC329D13F9700312CB3 /* ScoutingSubpage.swift in Sources */,
+				02051DB22BB1229700518568 /* ProtoSheets.swift in Sources */,
 				025D95DF29CE151800C67722 /* HomeView.swift in Sources */,
 				02405DEB29D79D8000FFEB4E /* ProtoTeamJoinCodeOnboard.swift in Sources */,
 				02619F8329D3717200308E5C /* RegionalSubPageScoutingDataView.swift in Sources */,
@@ -666,7 +670,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LU5L9YLQSG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProtoConnect/Info.plist;
@@ -696,7 +700,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LU5L9YLQSG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProtoConnect/Info.plist;

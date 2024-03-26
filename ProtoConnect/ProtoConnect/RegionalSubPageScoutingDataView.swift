@@ -15,20 +15,23 @@ struct RegionalSubPageScoutingDataView: View {
     @State var blueTeams: [String]
     @State var currentSelectedTeam: String = ""
     @State var regionalKey: String
-    @State var matchKey: String
+    @State var matchNumber: String
     
-    @State var highConesStepper: Int = 0
-    @State var midConesStepper: Int = 0
-    @State var lowConesStepper: Int = 0
-    @State var highCubesStepper: Int = 0
-    @State var midCubesStepper: Int = 0
-    @State var lowCubesStepper: Int = 0
+    @State var autoSpeakerNotesMade: Int = 0
+    @State var autoSpeakerNotesAttempted: Int = 0
+    @State var autoAmpNotesMade: Int = 0
+    @State var autoAmpNotesAttempted: Int = 0
+    @State var teleopSpeakerNotesMade: Int = 0
+    @State var teleopSpeakerNotesAttempted: Int = 0
+    @State var teleopAmpNotesMade: Int = 0
+    @State var teleopAmpNotesAttempted: Int = 0
     
-    @State var robotTaxi: Bool = false
-    
-    @State var robotEngaged: Bool = false
-    @State var robotDocked: Bool = false
-    
+    @State var robotHang: Bool = false
+    @State var robotTrapScore: Bool = false
+    @State var robotAmplify: Bool = false
+    @State var robotCoopertition: Bool = false
+    @State var robotHarmony: Bool = false
+
     @State var currentPlayType: String = "auto"
     
     var body: some View {
@@ -66,9 +69,10 @@ struct RegionalSubPageScoutingDataView: View {
                         guard let teamNumber = ProtoFirebase.currentProtoUser?.teamNum else {
                             return
                         }
-                        ProtoFirebase.teamCollection.document("\(teamNumber)").collection(regionalKey).document(matchKey).collection(newValue).document(currentPlayType).addSnapshotListener { oneDocSnapshot, oneDocError in
-                            updateRegionalData()
-                        }
+                        updateRegionalData()
+//                        ProtoFirebase.teamCollection.document("\(teamNumber)").collection(regionalKey).document(matchKey).collection(newValue).document(currentPlayType).addSnapshotListener { oneDocSnapshot, oneDocError in
+//                            updateRegionalData()
+//                        }
                     }
 
                     Picker("", selection: $currentPlayType) {
@@ -88,9 +92,9 @@ struct RegionalSubPageScoutingDataView: View {
                         guard let teamNumber = ProtoFirebase.currentProtoUser?.teamNum else {
                             return
                         }
-                        ProtoFirebase.teamCollection.document("\(teamNumber)").collection(regionalKey).document(matchKey).collection(currentSelectedTeam).document(newValue).addSnapshotListener { oneDocSnapshot, oneDocError in
-                            updateRegionalData()
-                        }
+//                        ProtoFirebase.teamCollection.document("\(teamNumber)").collection(regionalKey).document(matchKey).collection(currentSelectedTeam).document(newValue).addSnapshotListener { oneDocSnapshot, oneDocError in
+//                            updateRegionalData()
+//                        }
                     }
                   
                     
@@ -106,7 +110,7 @@ struct RegionalSubPageScoutingDataView: View {
                 
                 VStack {
                     HStack {
-                        Text("Cubes")
+                        Text("Speaker")
                             .font(.system(size: 25, weight: .bold, design: .rounded))
                             .bold()
                             .foregroundColor(Color.black)
@@ -117,81 +121,108 @@ struct RegionalSubPageScoutingDataView: View {
                     }
                     VStack {
                         VStack {
-                            
-                            Stepper {
-                                Text("\(highCubesStepper) High Cubes")
-                                    .bold()
-                            } onIncrement: {
-                                highCubesStepper += 1
-                            } onDecrement: {
-                                if (highCubesStepper > 0) {
-                                    highCubesStepper -= 1
+                            if currentPlayType == "auto" {
+                                Stepper {
+                                    Text("\(autoSpeakerNotesMade) Notes Made")
+                                        .bold()
+                                } onIncrement: {
+                                    autoSpeakerNotesMade += 1
+                                    autoSpeakerNotesAttempted += 1
+                                } onDecrement: {
+                                    if (autoSpeakerNotesMade > 0) {
+                                        autoSpeakerNotesMade -= 1
+                                    }
+                                } onEditingChanged: { oneEditing in
+                                    
                                 }
-                            } onEditingChanged: { oneEditing in
-                               
+                                .padding(.horizontal)
+                                .onChange(of: autoSpeakerNotesMade, perform: { newValue in
+                                  
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "D", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                    
+                                })
                             }
-                            .padding(.horizontal)
-                            .onChange(of: highCubesStepper, perform: { newValue in
-                                ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "highCubes", dataValue: String(newValue))
-                                
-                            })
+                            else {
+                                Stepper {
+                                    Text("\(teleopSpeakerNotesMade) Notes Made")
+                                        .bold()
+                                } onIncrement: {
+                                    teleopSpeakerNotesMade += 1
+                                    teleopSpeakerNotesAttempted += 1
+                                } onDecrement: {
+                                    if (teleopSpeakerNotesMade > 0) {
+                                        teleopSpeakerNotesMade -= 1
+                                    }
+                                } onEditingChanged: { oneEditing in
+                                    
+                                }
+                                .padding(.horizontal)
+                                .onChange(of: teleopSpeakerNotesMade, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "H", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+
+                                    
+                                })
+                            }
                             
                         }
 
                         Spacer()
                         VStack {
-                            
-                            Stepper {
-                                Text("\(midCubesStepper) Middle Cubes")
-                                    .bold()
-                            } onIncrement: {
-                                midCubesStepper += 1
-                            } onDecrement: {
-                                if (midCubesStepper > 0) {
-                                    midCubesStepper -= 1
+                            if (currentPlayType == "auto") {
+                                Stepper {
+                                    Text("\(autoSpeakerNotesAttempted) Notes Attempted")
+                                        .bold()
+                                } onIncrement: {
+                                    autoSpeakerNotesAttempted += 1
+                                    
+                                } onDecrement: {
+                                    if (autoSpeakerNotesAttempted > 0) {
+                                        autoSpeakerNotesAttempted -= 1
+                                    }
+                                } onEditingChanged: { oneEditing in
+                                    
                                 }
-                            } onEditingChanged: { oneEditing in
-                                
+                                .onChange(of: autoSpeakerNotesAttempted, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "C", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+
+                                })
                             }
-                            .onChange(of: midCubesStepper, perform: { newValue in
-                                ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "midCubes", dataValue: String(newValue))
-                            })
+                            else {
+                                Stepper {
+                                    Text("\(teleopSpeakerNotesAttempted) Notes Attempted")
+                                        .bold()
+                                } onIncrement: {
+                                    teleopSpeakerNotesAttempted += 1
+                                    
+                                } onDecrement: {
+                                    if (teleopSpeakerNotesAttempted > 0) {
+                                        teleopSpeakerNotesAttempted -= 1
+                                    }
+                                } onEditingChanged: { oneEditing in
+                                    
+                                }
+                                .onChange(of: teleopSpeakerNotesAttempted, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "G", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
+                            }
+                           
                             
                         }
                         .padding(.horizontal)
                         Spacer()
-                        VStack {
-                            
-                            Stepper {
-                                Text("\(lowCubesStepper) Hybrid Cubes")
-                                    .bold()
-                            } onIncrement: {
-                                lowCubesStepper += 1
-                            } onDecrement: {
-                                if (lowCubesStepper > 0) {
-                                    lowCubesStepper -= 1
-                                }
-                            } onEditingChanged: { oneEditing in
-                                
-                            }
-                            .onChange(of: lowCubesStepper, perform: { newValue in
-                                ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "hybridCubes", dataValue: String(newValue))
-                            })
-                            
-                        }
-                        .padding(.horizontal)
+
                     }
                     .padding(.bottom)
                     Spacer()
                 }.frame(maxWidth: .infinity)
-                    .frame(height: 230)
+                    .frame(height: 180)
                     .background(LinearGradient(colors: [Color(red: 0.55, green: 0.78, blue: 0.93), Color(red: 0.58, green: 0.6, blue: 0.89)], startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(20)
-                    .padding()
+                    .padding(10)
                     .shadow(radius: 2)
                 VStack {
                     HStack {
-                        Text("Cones")
+                        Text("Amp")
                             .font(.system(size: 25, weight: .bold, design: .rounded))
                             .bold()
                             .foregroundColor(Color.black)
@@ -203,155 +234,228 @@ struct RegionalSubPageScoutingDataView: View {
                     VStack {
                         VStack {
                             
-                            Stepper {
-                                Text("\(highConesStepper) High Cones")
-                                    .bold()
-                            } onIncrement: {
-                                highConesStepper += 1
-                            } onDecrement: {
-                                if (highConesStepper > 0) {
-                                    highConesStepper -= 1
+                            if currentPlayType == "auto" {
+                                Stepper {
+                                    Text("\(autoAmpNotesMade) Notes Made")
+                                        .bold()
+                                } onIncrement: {
+                                    autoAmpNotesMade += 1
+                                    autoAmpNotesAttempted += 1
+                                } onDecrement: {
+                                    if (autoAmpNotesMade > 0) {
+                                        autoAmpNotesMade -= 1
+                                    }
+                                } onEditingChanged: { oneEditing in
+                                    
                                 }
-                            } onEditingChanged: { oneEditing in
-                                
+                                .padding(.horizontal)
+                                .onChange(of: autoAmpNotesMade, perform: { newValue in
+                          
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "F", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
                             }
-                            .padding(.horizontal)
-                            .onChange(of: highConesStepper, perform: { newValue in
-                                ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "highCones", dataValue: String(newValue))
-                            })
+                            else {
+                                Stepper {
+                                    Text("\(teleopAmpNotesMade) Notes Made")
+                                        .bold()
+                                } onIncrement: {
+                                    teleopAmpNotesMade += 1
+                                    teleopAmpNotesAttempted += 1
+                                } onDecrement: {
+                                    if (teleopAmpNotesMade > 0) {
+                                        teleopAmpNotesMade -= 1
+                                    }
+                                } onEditingChanged: { oneEditing in
+                                    
+                                }
+                                .padding(.horizontal)
+                                .onChange(of: teleopAmpNotesMade, perform: { newValue in
+                              
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "J", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
+                            }
                             
                         }
 
                         Spacer()
                         VStack {
                             
-                            Stepper {
-                                Text("\(midConesStepper) Middle Cones")
-                                    .bold()
-                            } onIncrement: {
-                                midConesStepper += 1
-                            } onDecrement: {
-                                if (midConesStepper > 0) {
-                                    midConesStepper -= 1
+                            if currentPlayType == "auto" {
+                                Stepper {
+                                    Text("\(autoAmpNotesAttempted) Notes Attempted")
+                                        .bold()
+                                } onIncrement: {
+                                    autoAmpNotesAttempted += 1
+                                } onDecrement: {
+                                    if (autoAmpNotesAttempted > 0) {
+                                        autoAmpNotesAttempted -= 1
+                                    }
+                                } onEditingChanged: { oneEditing in
+                                    
                                 }
-                            } onEditingChanged: { oneEditing in
-                                
+                                .onChange(of: autoAmpNotesAttempted, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "E", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
                             }
-
+                            else {
+                                Stepper {
+                                    Text("\(teleopAmpNotesAttempted) Notes Attempted")
+                                        .bold()
+                                } onIncrement: {
+                                    teleopAmpNotesAttempted += 1
+                                } onDecrement: {
+                                    if (teleopAmpNotesAttempted > 0) {
+                                        teleopAmpNotesAttempted -= 1
+                                    }
+                                } onEditingChanged: { oneEditing in
+                                    
+                                }
+                                .onChange(of: teleopAmpNotesAttempted, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "I", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
+                            }
                             
                         }
                         .padding(.horizontal)
-                        .onChange(of: midConesStepper, perform: { newValue in
-                            ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "midCones", dataValue: String(newValue))
-                        })
+                       
                         Spacer()
-                        VStack {
-                            
-                            Stepper {
-                                Text("\(lowConesStepper) Hybrid Cones")
-                                    .bold()
-                            } onIncrement: {
-                                lowConesStepper += 1
-                            } onDecrement: {
-                                if (lowConesStepper > 0) {
-                                    lowConesStepper -= 1
-                                }
-                            } onEditingChanged: { oneEditing in
-                                
-                            }
-
-                            
-                        }
-                        .padding(.horizontal)
-                        .onChange(of: lowConesStepper, perform: { newValue in
-                            ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "lowCones", dataValue: String(newValue))
-                        })
                     }
                     .padding(.bottom)
                     Spacer()
                 }.frame(maxWidth: .infinity)
-                    .frame(height: 230)
+                    .frame(height: 180)
                     .background(LinearGradient(colors: [Color(red: 0.97, green: 0.81, blue: 0.41), Color(red: 0.98, green: 0.67, blue: 0.49)], startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(20)
-                    .padding()
+                    .padding(10)
                     .shadow(radius: 2)
                 
                 VStack {
-                        
-                    if !robotDocked {
-                        
+                    
+                   
+               
+//                        if !robotParked {
                         VStack {
-                            Toggle(isOn: $robotEngaged) {
-                                Text("Engaged")
-                                    .font(.system(size: 23, weight: .bold, design: .rounded))
-                                    .bold()
-                                    .foregroundColor(Color.black)
-                                    .padding(.bottom, 1)
-                                
-                                
-                            }
-                            .padding(.horizontal)
-                            .onChange(of: robotEngaged, perform: { newValue in
-                                ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "chargeStation", dataValue: newValue ? String("engaged") : "")
-                            })
-                            Text("The state of the ROBOT if the following are true: the CHARGE STATION is LEVEL & all ALLIANCE ROBOTS contacting the CHARGE STATION are DOCKED.")
-                                .font(.system(size: 13, weight: .regular, design: .rounded))
-                                .bold()
-                                .foregroundColor(Color.Neumorphic.secondary)
+                            VStack {
+                                Toggle(isOn: $robotCoopertition) {
+                                    Text("Coopertition")
+                                        .font(.system(size: 23, weight: .bold, design: .rounded))
+                                        .bold()
+                                        .foregroundColor(Color.black)
+                                        .padding(.bottom, 1)
+                                    
+                                    
+                                }
                                 .padding(.horizontal)
-                        }
-                    }
-                    if !robotEngaged {
-                        VStack {
-                            Toggle(isOn: $robotDocked) {
-                                Text("Docked")
-                                    .font(.system(size: 23, weight: .bold, design: .rounded))
+                                .onChange(of: robotCoopertition, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "P", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
+                                Text("A ROBOT is DOCKED if it is contacting only the CHARGE STATION and/or other items also directly or transitively fully supported by the CHARGE STATION.")
+                                    .font(.system(size: 13, weight: .regular, design: .rounded))
                                     .bold()
-                                    .foregroundColor(Color.black)
-                                    .padding(.bottom, 1)
-                                
-                                
+                                    .foregroundColor(Color.Neumorphic.secondary)
+                                    .padding(.horizontal)
                             }
-                            .padding(.horizontal)
-                            .onChange(of: robotDocked, perform: { newValue in
-                                ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "chargeStation", dataValue: newValue ? String("docked") : "")
-                            })
-                            Text("A ROBOT is DOCKED if it is contacting only the CHARGE STATION and/or other items also directly or transitively fully supported by the CHARGE STATION.")
-                                .font(.system(size: 13, weight: .regular, design: .rounded))
-                                .bold()
-                                .foregroundColor(Color.Neumorphic.secondary)
+                            VStack {
+                                
+                                Toggle(isOn: $robotHang) {
+                                    Text("Hang")
+                                        .font(.system(size: 23, weight: .bold, design: .rounded))
+                                        .bold()
+                                        .foregroundColor(Color.black)
+                                        .padding(.bottom, 1)
+                                    
+                                    
+                                }
                                 .padding(.horizontal)
-                        }
-                        .padding(.top, robotDocked ? 0 : 20)
+                                .onChange(of: robotHang, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "L", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
+                                Text("The state of the ROBOT if the following are true: the CHARGE STATION is LEVEL & all ALLIANCE ROBOTS contacting the CHARGE STATION are DOCKED.")
+                                    .font(.system(size: 13, weight: .regular, design: .rounded))
+                                    .bold()
+                                    .foregroundColor(Color.Neumorphic.secondary)
+                                    .padding(.horizontal)
+                            }
+                            .padding(.top, 20)
+                            VStack {
+                                
+                                Toggle(isOn: $robotAmplify) {
+                                    Text("Amplify")
+                                        .font(.system(size: 23, weight: .bold, design: .rounded))
+                                        .bold()
+                                        .foregroundColor(Color.black)
+                                        .padding(.bottom, 1)
+                                    
+                                    
+                                }
+                                .padding(.horizontal)
+                                .onChange(of: robotAmplify, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "N", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
+                                Text("The state of the ROBOT if the following are true: the CHARGE STATION is LEVEL & all ALLIANCE ROBOTS contacting the CHARGE STATION are DOCKED.")
+                                    .font(.system(size: 13, weight: .regular, design: .rounded))
+                                    .bold()
+                                    .foregroundColor(Color.Neumorphic.secondary)
+                                    .padding(.horizontal)
+                            }
+                            .padding(.top, 20)
+                            VStack {
+                                
+                                Toggle(isOn: $robotHarmony) {
+                                    Text("Harmony")
+                                        .font(.system(size: 23, weight: .bold, design: .rounded))
+                                        .bold()
+                                        .foregroundColor(Color.black)
+                                        .padding(.bottom, 1)
+                                    
+                                    
+                                }
+                                .padding(.horizontal)
+                                .onChange(of: robotHarmony, perform: { newValue in
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "O", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
+                                Text("The state of the ROBOT if the following are true: the CHARGE STATION is LEVEL & all ALLIANCE ROBOTS contacting the CHARGE STATION are DOCKED.")
+                                    .font(.system(size: 13, weight: .regular, design: .rounded))
+                                    .bold()
+                                    .foregroundColor(Color.Neumorphic.secondary)
+                                    .padding(.horizontal)
+                            }
+                            .padding(.top, 20)
+                            
+                            VStack {
+                                
+                                Toggle(isOn: $robotTrapScore) {
+                                    Text("Trap Score")
+                                        .font(.system(size: 23, weight: .bold, design: .rounded))
+                                        .bold()
+                                        .foregroundColor(Color.black)
+                                        .padding(.bottom, 1)
+                                    
+                                    
+                                }
+                                .padding(.horizontal)
+                                .onChange(of: robotTrapScore, perform: { newValue in
+                                    
+                                    ProtoSheets.setRowTeamNumberData(data: newValue, column: "M", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                })
+                                Text("A ROBOT is DOCKED if it is contacting only the CHARGE STATION and/or other items also directly or transitively fully supported by the CHARGE STATION.")
+                                    .font(.system(size: 13, weight: .regular, design: .rounded))
+                                    .bold()
+                                    .foregroundColor(Color.Neumorphic.secondary)
+                                    .padding(.horizontal)
+                            }    
+                            .padding(.top, 20)
 
-                    }
-                    if currentPlayType == "auto" {
-                        VStack {
-                            Toggle(isOn: $robotTaxi) {
-                                Text("Taxi")
-                                    .font(.system(size: 23, weight: .bold, design: .rounded))
-                                    .bold()
-                                    .foregroundColor(Color.black)
-                                    .padding(.bottom, 1)
-                                
-                                
-                            }
-                            .padding(.horizontal)
-                            .onChange(of: robotTaxi, perform: { newValue in
-                                ProtoFirebase.uploadCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam, dataKey: "taxi", dataValue: newValue ? "taxied" : "stayed")
-                            })
-                            Text("A ROBOT is TAXIED when it leaves the community.")
-                                .font(.system(size: 13, weight: .regular, design: .rounded))
-                                .bold()
-                                .foregroundColor(Color.Neumorphic.secondary)
-                                .padding(.horizontal)
                         }
-                        .padding(.top, robotDocked ? 0 : 20)
-                    }
+                        .padding(.vertical)
+                        
+//                        }
+                    
+                       
                 
                 }
                 .frame(maxWidth: .infinity)
-                    .frame(height: (robotEngaged || robotDocked) ? 150 : 300)
+//                .frame(height: currentPlayType == "auto" ? 100 : 325)
                     .background(LinearGradient(colors: [Color(red: 0.883, green: 0.80, blue: 0.89), Color(red: 0.91, green: 0.89, blue: 0.94)], startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(20)
                     .padding()
@@ -362,36 +466,52 @@ struct RegionalSubPageScoutingDataView: View {
             }
             .onAppear {
                 currentSelectedTeam = redTeams.first ?? "frc-1"
-               
+                updateRegionalData()
             }
 
      
         
     }
     func updateRegionalData() {
-        ProtoFirebase.retrieveCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam) { protoData in
-           
-         
+        ProtoSheets.getRowTeamNumberData(matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: "")) { dataRetrieved in
+            autoSpeakerNotesMade = Int(dataRetrieved["autoSpeakerMade"] as? Double ?? 0)
+            autoSpeakerNotesAttempted = Int(dataRetrieved["autoSpeakerAtp"] as? Double ?? 0)
+            autoAmpNotesMade = Int(dataRetrieved["autoAmpMade"] as? Double ?? 0)
+            autoAmpNotesAttempted = Int(dataRetrieved["autoAmpAtp"] as? Double ?? 0)
+            teleopSpeakerNotesMade = Int(dataRetrieved["teleopSpeakerMade"] as? Double ?? 0)
+            teleopSpeakerNotesAttempted = Int(dataRetrieved["teleopSpeakerAtp"] as? Double ?? 0)
+            teleopAmpNotesMade = Int(dataRetrieved["teleopAmpMade"] as? Double ?? 0)
+            teleopAmpNotesAttempted = Int(dataRetrieved["teleopAmpAtp"] as? Double ?? 0)
             
-            highConesStepper = Int(protoData["highCones"] as? String ?? "0") ?? 0
-            midConesStepper = Int(protoData["midCones"] as? String ?? "0") ?? 0
-            lowConesStepper = Int(protoData["hybridCones"] as? String ?? "0") ?? 0
-            highCubesStepper = Int(protoData["highCubes"] as? String ?? "0") ?? 0
-            midCubesStepper = Int(protoData["midCubes"] as? String ?? "0") ?? 0
-            lowCubesStepper = Int(protoData["hybridCubes"] as? String ?? "0") ?? 0
-            
-            robotEngaged = protoData["chargeStation"] as? String ?? "" == "engaged" ? true : false
-            robotDocked = protoData["chargeStation"] as? String ?? "" == "docked" ? true : false
-            robotTaxi = protoData["taxi"] as? String ?? "" == "taxied" ? true : false
-
+            robotHang = dataRetrieved["hang"] as? Bool ?? false
+            robotTrapScore = dataRetrieved["trapScore"] as? Bool ?? false
+            robotCoopertition = dataRetrieved["coopertition"] as? Bool ?? false
+            robotAmplify = dataRetrieved["amplify"] as? Bool ?? false
+            robotHarmony = dataRetrieved["harmony"] as? Bool ?? false
         }
+//        ProtoFirebase.retrieveCompetitionKeyMatch(playType: currentPlayType, regionalKey: regionalKey, matchKey: matchKey, teamNum: currentSelectedTeam) { protoData in
+//           
+//         
+//            
+//            highConesStepper = Int(protoData["highCones"] as? String ?? "0") ?? 0
+//            midConesStepper = Int(protoData["midCones"] as? String ?? "0") ?? 0
+//            lowConesStepper = Int(protoData["hybridCones"] as? String ?? "0") ?? 0
+//            highCubesStepper = Int(protoData["highCubes"] as? String ?? "0") ?? 0
+//            midCubesStepper = Int(protoData["midCubes"] as? String ?? "0") ?? 0
+//            lowCubesStepper = Int(protoData["hybridCubes"] as? String ?? "0") ?? 0
+//            
+//            robotEngaged = protoData["chargeStation"] as? String ?? "" == "engaged" ? true : false
+//            robotDocked = protoData["chargeStation"] as? String ?? "" == "docked" ? true : false
+//            robotTaxi = protoData["taxi"] as? String ?? "" == "taxied" ? true : false
+//
+//        }
     }
     
 }
 
 struct RegionalSubPageScoutingDataView_Previews: PreviewProvider {
     static var previews: some View {
-        Text("Hello")
-//        RegionalSubPageScoutingDataView(redTeams: ["frc2854", "frc972", "frc972"], blueTeams: ["frc1232", "frc2343", "frc3442"], currentSelectedTeam: "", highConesStepper: 0)
+//        Text("Hello")
+        RegionalSubPageScoutingDataView(redTeams: ["frc2854", "frc972", "frc972"], blueTeams: ["frc1232", "frc2343", "frc3442"], regionalKey: "2024frc", matchNumber: "")
     }
 }

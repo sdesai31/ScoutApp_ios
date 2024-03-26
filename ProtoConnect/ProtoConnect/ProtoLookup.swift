@@ -63,7 +63,7 @@ struct ProtoLookup {
     }
     static func teamCompetitionKey(completion: @escaping (Bool) -> ()) {
         
-        guard let teamURL = URL(string: "https://www.thebluealliance.com/api/v3/team/frc\(ProtoFirebase.currentProtoUser?.teamNum ?? "-1")/events/2023/keys") else {
+        guard let teamURL = URL(string: "https://www.thebluealliance.com/api/v3/team/frc\(ProtoFirebase.currentProtoUser?.teamNum ?? "-1")/events/2024/keys") else {
             
             completion(false)
             return
@@ -198,7 +198,7 @@ struct ProtoLookup {
     
     static func teamCompetitionMatches(competitionKey: String, completion: @escaping ([[String:Any]]) -> ()) {
         
-        guard let teamURL = URL(string: "https://www.thebluealliance.com/api/v3/event/2023\(competitionKey)/matches") else {
+        guard let teamURL = URL(string: "https://www.thebluealliance.com/api/v3/event/2024\(competitionKey)/matches") else {
             
             completion([])
             return
