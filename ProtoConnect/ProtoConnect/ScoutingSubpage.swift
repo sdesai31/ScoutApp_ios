@@ -87,6 +87,7 @@ struct ScoutingSubpage: View {
                         }
                         
                         
+                      
                         ForEach(0..<ProtoLookup.teamCompetitionsInfo.count, id: \.self) { i in
                             
                             

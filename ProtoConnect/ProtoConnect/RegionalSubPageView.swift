@@ -17,7 +17,7 @@ struct RegionalSubPageView: View {
     var competitionKey: String
     var locationName: String
     @State var filteredProtoMatches: [[String:Any]] = []
-    
+    @State var finalAssignments: [String] = []
     @State var searchBarProto: String = ""
     
     var body: some View {
@@ -38,10 +38,29 @@ struct RegionalSubPageView: View {
                     .padding(.horizontal)
                     .padding(.vertical, 10)
                     .background(RoundedRectangle(cornerRadius: 30).fill(Color.Neumorphic.main).softInnerShadow(RoundedRectangle(cornerRadius: 30), darkShadow: Color.Neumorphic.darkShadow, lightShadow: Color.Neumorphic.lightShadow, spread: 0.05, radius: 2))
+                    
+                    if ProtoFirebase.isAdmin {
+                        Button {
+                            ProtoSheets.generateScoutingTeam(competitionKey: competitionKey)
+                        } label: {
+                       
+                            HStack {
+                              
+                                Text("Generate Scouting Assignments")
+                                    .foregroundColor(.black)
+                                    .bold()
+                            }
+                            .padding(.horizontal)
+                        }
+                        
+                        .padding(.vertical, 20)
+                        .padding(.horizontal)
+                        .background(RoundedRectangle(cornerRadius: 30).stroke(Color.black, lineWidth: 2).foregroundColor(.clear))
 
+                    }
                     ForEach(0..<filteredProtoMatches.count, id: \.self) { oneProtoMatch in
                        
-                            RegionalMatchView(matchInfo: filteredProtoMatches[oneProtoMatch])
+                        RegionalMatchView(matchInfo: filteredProtoMatches[oneProtoMatch], assignments: finalAssignments)
 
                         
 
@@ -79,9 +98,33 @@ struct RegionalSubPageView: View {
             }
         })
         .onAppear {
-            ProtoLookup.teamCompetitionMatches(competitionKey: competitionKey) { allProtoMatches in
-                filteredProtoMatches = allProtoMatches
-                
+            if ProtoFirebase.isAdmin {
+                ProtoLookup.teamCompetitionMatches(competitionKey: competitionKey) { allProtoMatches in
+                    filteredProtoMatches = allProtoMatches
+                }
+            }
+            else {
+                guard let myID = ProtoFirebase.currentProtoUser?.id else { return }
+                ProtoSheets.getTeamScoutingAssignments { assignments in
+                    let myAssignments = assignments.filter { oneAssignment in
+                        return oneAssignment.contains(myID)
+                    }
+                    finalAssignments = myAssignments
+                    
+                    ProtoLookup.teamCompetitionMatches(competitionKey: competitionKey) { allProtoMatches in
+                        filteredProtoMatches = allProtoMatches.filter({ oneMatch in
+                            if let matchNumber = ((oneMatch["match_number"] as? Int)) {
+                                if (myAssignments.contains(where: { oneString in
+                                    return (oneString.components(separatedBy: " ").last ?? "error") == ("Match\(matchNumber)")
+                                })) {
+                                    return true
+                                }
+                            }
+                            return false
+                        })
+                        
+                    }
+                }
             }
         }
     }
@@ -90,15 +133,22 @@ struct RegionalSubPageView: View {
 struct RegionalMatchView: View {
     
     var matchInfo: [String:Any]
-    
+    var assignments: [String]
     
     var body: some View {
         
-        if let blueAlliance = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["team_keys"] as? [String], let redAlliance = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["team_keys"] as? [String], let blueAllianceScore = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["score"] as? Int, let redAllianceScore = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["score"] as? Int, let regionalKey = ((matchInfo["event_key"] as? String)) {
+        if var blueAlliance = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["team_keys"] as? [String], var redAlliance = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["team_keys"] as? [String], let blueAllianceScore = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["score"] as? Int, let redAllianceScore = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["score"] as? Int, let regionalKey = ((matchInfo["event_key"] as? String)) {
             
             NavigationLink(destination: {
-                if let matchNumber = (((matchInfo["match_number"])) as? Int) {
-                    RegionalSubPageScoutingDataView(redTeams: redAlliance, blueTeams: blueAlliance, regionalKey: regionalKey, matchNumber: String(matchNumber))
+                if let matchNumber = (((matchInfo["match_number"])) as? Int), let myID = ProtoFirebase.currentProtoUser?.id {
+                    var teamAssignment = (assignments.filter { teamNum in
+                        return (teamNum.components(separatedBy: " ").last ?? "error") == ("Match\(matchNumber)")
+                    }).map { oneString in
+                        return oneString.replacingOccurrences(of: myID, with: "").trimmingCharacters(in: .whitespaces).components(separatedBy: " ").first ?? "error"
+                    }
+                    
+                    RegionalSubPageScoutingDataView(redTeams: redAlliance, blueTeams: blueAlliance, regionalKey: regionalKey, matchNumber: String(matchNumber), assignments: teamAssignment)
+                    
                 }
             }, label: {
                 VStack {

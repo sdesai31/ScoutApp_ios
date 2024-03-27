@@ -87,7 +87,83 @@ struct ProtoSheets {
     }
     
     
+    static func generateScoutingTeam(competitionKey: String) {
+        generateRefreshToken { bearerToken in
+            if let dataBearerToken = bearerToken {
+                ProtoFirebase.getProtoUsers { users in
+                    var userIndex = 0
+                    var arrayCompetition = [String]()
+
+                    ProtoLookup.teamCompetitionMatches(competitionKey: competitionKey) { allProtoMatches in
+                        for matchInfo in allProtoMatches {
+                            if let blueAlliance = ((matchInfo["alliances"] as? [String:Any])?["blue"] as? [String:Any])?["team_keys"] as? [String], let redAlliance = ((matchInfo["alliances"] as? [String:Any])?["red"] as? [String:Any])?["team_keys"] as? [String], let matchNumber = (((matchInfo["match_number"])) as? Int) {
+                                
+                                for oneTeam in redAlliance + blueAlliance {
+                                    if (userIndex >= users.count) {
+                                        userIndex = 0
+                                    }
+                                    arrayCompetition.append(users[userIndex].id + " " + oneTeam + " Match" + String(matchNumber))
+                                    userIndex += 1
+                                }
+                                
+                             
+
+                                
+                            }
+                            
+                        }
+                        
+                        print(arrayCompetition)
+                        setScoutingTeamAssignments(scoutingTeams: arrayCompetition)
+                        
+                    }
+                    
+                }
+            }
+        }
+    }
     
+    static func getTeamScoutingAssignments(completion: @escaping (([String]) -> ())) {
+        generateRefreshToken { bearerToken in
+            if let dataBearerToken = bearerToken {
+                
+                    var request = URLRequest(url: URL(string: "https://sheets.googleapis.com/v4/spreadsheets/\(sheetID)/values/SCOUTING_ASSIGNMENTS!A1:Z1000/?majorDimension=ROWS")!,timeoutInterval: Double.infinity)
+                    request.addValue("Bearer \(dataBearerToken)", forHTTPHeaderField: "Authorization")
+                    
+                    request.httpMethod = "GET"
+                    
+                    URLSession.shared.dataTask(with: request) { data, response, error in
+                        do {
+                            guard let data = data else {
+                                print(String(describing: error))
+                                return
+                            }
+                            guard let dataJSON = try JSONSerialization.jsonObject(with: data) as? [String:Any] else { return }
+                            print(dataJSON)
+                            guard var dataJSONValues = dataJSON["values"] as? [[String]] else { return }
+                                guard let currentID = ProtoFirebase.currentProtoUser?.id else { return }
+                            let newJSONVals = dataJSONValues.map { oneArray in
+                                return oneArray.first ?? "Error"
+                            }
+                                let allRowData = newJSONVals.filter { oneString in
+                                    return oneString.contains(currentID)
+                                }
+                                
+                                completion(allRowData)
+                                
+                                
+                            
+                            print(dataJSONValues)
+                        }
+                        catch {
+                            print(error)
+                            completion([])
+                        }
+                    }.resume()
+                }
+            
+        }
+    }
     static func getRowTeamNumberData(matchNumber: String, teamNumber: String, completion: @escaping (([String:Any]) -> ())) {
         generateRefreshToken { bearerToken in
             if let dataBearerToken = bearerToken {
@@ -196,5 +272,33 @@ struct ProtoSheets {
                 }
             }
         }
+    }
+    static func setScoutingTeamAssignments(scoutingTeams: [String]) {
+        generateRefreshToken { bearerToken in
+            if let dataBearerToken = bearerToken {
+                
+                let parameters = "{\n    \"range\": \"SCOUTING_ASSIGNMENTS!A1\",\n    \"majorDimension\": \"COLUMNS\",\n    \"values\": [\n      " + "\(scoutingTeams)" + "   ]\n  }"
+                let postData = parameters.data(using: .utf8)
+                
+                var request = URLRequest(url: URL(string: "https://sheets.googleapis.com/v4/spreadsheets/\(sheetID)/values/SCOUTING_ASSIGNMENTS!A1?valueInputOption=USER_ENTERED&includeValuesInResponse=false")!,timeoutInterval: Double.infinity)
+                request.addValue("Bearer \(dataBearerToken)", forHTTPHeaderField: "Authorization")
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                request.httpMethod = "PUT"
+                request.httpBody = postData
+                
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    guard let data = data else {
+                        print(String(describing: error))
+                        return
+                    }
+                    print(String(data: data, encoding: .utf8)!)
+                }
+                
+                task.resume()
+                
+            }
+        }
+        
     }
 }

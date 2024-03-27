@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let firebaseClientID = FirebaseApp.app()?.options.clientID else { return true }
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: firebaseClientID)
         
-        
         return true
     }
 

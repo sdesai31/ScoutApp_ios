@@ -139,6 +139,6 @@ struct ProtoTeamJoinCodeOnboard: View {
 struct ProtoTeamJoinCodeOnboard_Previews: PreviewProvider {
     static var previews: some View {
         Text("Proto Team Enter")
-//        ProtoTeamJoinCodeOnboard(, presentOnboard: <#Binding<Bool>#>)
+//        ProtoTeamJoinCodeOnboard(, presentOnboard: Binding<Bool>)
     }
 }

@@ -25,7 +25,7 @@ struct ProtoFirebase {
         var teamCode: String
         
     }
-    
+    static var isAdmin = false
     static var currentProtoUser: ProtoUser? = nil {
         didSet {
             do {
@@ -48,8 +48,32 @@ struct ProtoFirebase {
     
     
     private static var userCollection = Firestore.firestore().collection("users")
+    private static var adminCollection = Firestore.firestore().collection("admins").document("e24RlI1UFv8XCfsN1hpA")
     public static var teamCollection = Firestore.firestore().collection("teams")
     
+    static func getAdminStatus() {
+        adminCollection.getDocument { oneDoc, oneError in
+            if oneError == nil {
+                guard let doc = oneDoc else {
+                   
+                    return
+                }
+                guard let admins = doc.data()?["admins"] as? [String] else {
+                
+                    return
+                }
+                if (admins.contains(currentProtoUser?.email ?? "-1")) {
+                    isAdmin = true
+                }
+                else {
+                    isAdmin = false
+                }
+            }
+            else {
+        
+            }
+        }
+    }
     static func checkProtoUserExists(email: String, completion: @escaping (Bool) -> ()) {
         
         userCollection.whereField("email", isEqualTo: email).getDocuments { docs, error in
@@ -86,7 +110,46 @@ struct ProtoFirebase {
             }
         }
     }
-    
+    static func getProtoUsers(completion: @escaping (([ProtoUser]) -> ())) {
+        adminCollection.getDocument { oneDoc, oneError in
+            if oneError == nil {
+                guard let doc = oneDoc else {
+                   
+                    return
+                }
+                guard let admins = doc.data()?["admins"] as? [String] else {
+                
+                    return
+                }
+                userCollection.getDocuments { docSnapshot, docError in
+                    if (docError == nil) {
+                 
+                            guard var snapshotDocs = (docSnapshot?.documents.map({ oneSnap in
+                                do {
+                                return try oneSnap.data(as: ProtoUser.self)
+                                }
+                                catch {
+                                    return ProtoUser(id: "", firstName: "", lastName: "", email: "", teamNum: "", teamID: "", teamCode: "")
+                                    print(error)
+                                }
+                            })) else {
+                                return
+                            }
+                            
+                        snapshotDocs.removeAll { oneProtoUser in
+                            return admins.contains(oneProtoUser.email)
+                        }
+                            completion(snapshotDocs)
+
+                    }
+                }
+            }
+            else {
+        
+            }
+        }
+     
+    }
     static func retrieveSignedInProtoUser() -> Bool {
         
         guard let protoUserDict = UserDefaults.standard.object(forKey: "user") as? [String:Any] else { return false }
@@ -100,7 +163,7 @@ struct ProtoFirebase {
         let protoTeamCode = protoUserDict["teamCode"] as? String ?? "-1"
 
         currentProtoUser = ProtoUser(id: protoID, firstName: protoFirst, lastName: protoLast, email: protoEmail, teamNum: protoTeamNum, teamID: protoTeamID, teamCode: protoTeamCode)
-        
+        getAdminStatus()
         return true
     }
     

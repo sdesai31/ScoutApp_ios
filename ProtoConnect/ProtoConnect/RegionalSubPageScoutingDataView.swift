@@ -16,6 +16,7 @@ struct RegionalSubPageScoutingDataView: View {
     @State var currentSelectedTeam: String = ""
     @State var regionalKey: String
     @State var matchNumber: String
+    @State var assignments: [String]
     
     @State var autoSpeakerNotesMade: Int = 0
     @State var autoSpeakerNotesAttempted: Int = 0
@@ -465,8 +466,23 @@ struct RegionalSubPageScoutingDataView: View {
                
             }
             .onAppear {
-                currentSelectedTeam = redTeams.first ?? "frc-1"
+                if !ProtoFirebase.isAdmin {
+                    redTeams.removeAll { oneString in
+                        return !assignments.contains(oneString)
+                    }
+                    blueTeams.removeAll { oneString in
+                        return !assignments.contains(oneString)
+                    }
+                }
+                if (!redTeams.isEmpty) {
+                    currentSelectedTeam = redTeams.first ?? "frc-1"
+                }
+                else if (!blueTeams.isEmpty) {
+                    currentSelectedTeam = blueTeams.first ?? "frc-1"
+                }
                 updateRegionalData()
+                
+               
             }
 
      
@@ -512,6 +528,6 @@ struct RegionalSubPageScoutingDataView: View {
 struct RegionalSubPageScoutingDataView_Previews: PreviewProvider {
     static var previews: some View {
 //        Text("Hello")
-        RegionalSubPageScoutingDataView(redTeams: ["frc2854", "frc972", "frc972"], blueTeams: ["frc1232", "frc2343", "frc3442"], regionalKey: "2024frc", matchNumber: "")
+        RegionalSubPageScoutingDataView(redTeams: ["frc2854", "frc972", "frc972"], blueTeams: ["frc1232", "frc2343", "frc3442"], regionalKey: "2024frc", matchNumber: "", assignments: [])
     }
 }
