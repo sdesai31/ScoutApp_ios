@@ -48,6 +48,7 @@
 		02F33EC829D201C000312CB3 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 02F33EC729D201C000312CB3 /* ActivityIndicatorView */; };
 		02F33ECB29D201E400312CB3 /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 02F33ECA29D201E400312CB3 /* ScalingHeaderScrollView */; };
 		592CA35E3513CBD8A4F9A296 /* Pods_ProtoConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A112C0F04083E70F65F189D3 /* Pods_ProtoConnectTests.framework */; };
+		7C7871D72BB4FA2A00A2904D /* QRcodeGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7871D62BB4FA2A00A2904D /* QRcodeGenerate.swift */; };
 		B73C7377CD52158666AF66CF /* Pods_ProtoConnect_ProtoConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4094028403CED72D2C0FC748 /* Pods_ProtoConnect_ProtoConnectUITests.framework */; };
 		EC0956AC04AABF8E2867B3EE /* Pods_ProtoConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B875637F165C1ACB042EF299 /* Pods_ProtoConnect.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		4094028403CED72D2C0FC748 /* Pods_ProtoConnect_ProtoConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProtoConnect_ProtoConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41036605EE4E5007DC8DA009 /* Pods-ProtoConnectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnectTests.debug.xcconfig"; path = "Target Support Files/Pods-ProtoConnectTests/Pods-ProtoConnectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6793ACAA1D57041024E18067 /* Pods-ProtoConnectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnectTests.release.xcconfig"; path = "Target Support Files/Pods-ProtoConnectTests/Pods-ProtoConnectTests.release.xcconfig"; sourceTree = "<group>"; };
+		7C7871D62BB4FA2A00A2904D /* QRcodeGenerate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcodeGenerate.swift; sourceTree = "<group>"; };
 		8D1A2FE24BDAB0AAD695D0DF /* Pods-ProtoConnect-ProtoConnectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnect-ProtoConnectUITests.release.xcconfig"; path = "Target Support Files/Pods-ProtoConnect-ProtoConnectUITests/Pods-ProtoConnect-ProtoConnectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9A5B3DF3ED5D5385E470FA2D /* Pods-ProtoConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProtoConnect.debug.xcconfig"; path = "Target Support Files/Pods-ProtoConnect/Pods-ProtoConnect.debug.xcconfig"; sourceTree = "<group>"; };
 		A112C0F04083E70F65F189D3 /* Pods_ProtoConnectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProtoConnectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +197,7 @@
 				02619F8229D3717200308E5C /* RegionalSubPageScoutingDataView.swift */,
 				02AB5EF029D018370020E3E8 /* LoginOnboardView.swift */,
 				02405DEA29D79D8000FFEB4E /* ProtoTeamJoinCodeOnboard.swift */,
+				7C7871D62BB4FA2A00A2904D /* QRcodeGenerate.swift */,
 				02405DE829D780D800FFEB4E /* GoogleService-Info.plist */,
 				025A294329CE0F9D007223C0 /* Main.storyboard */,
 				025A294629CE0F9F007223C0 /* Assets.xcassets */,
@@ -483,6 +486,7 @@
 				02AB5EF329D019640020E3E8 /* ProtoLookup.swift in Sources */,
 				02405DEF29D96DB100FFEB4E /* ProtoConnectSettings.swift in Sources */,
 				025A293E29CE0F9D007223C0 /* AppDelegate.swift in Sources */,
+				7C7871D72BB4FA2A00A2904D /* QRcodeGenerate.swift in Sources */,
 				02F33EC129D13D7900312CB3 /* HomeSubpage.swift in Sources */,
 				025D95DA29CE14CA00C67722 /* LoginView.swift in Sources */,
 				02AB5EF129D018370020E3E8 /* LoginOnboardView.swift in Sources */,

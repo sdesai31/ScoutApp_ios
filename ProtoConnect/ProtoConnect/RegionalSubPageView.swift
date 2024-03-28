@@ -22,7 +22,7 @@ struct RegionalSubPageView: View {
     
     var body: some View {
         VStack {
-            FancyScrollView(title: locationName, titleColor: Color.black, scrollUpHeaderBehavior: .parallax) {
+            FancyScrollView(title: locationName, titleColor: Color.blue, scrollUpHeaderBehavior: .parallax) {
                 ScoutingMapView(focusedLocationCoord: location)
                     .padding(.bottom, -25)
             } content: {
