@@ -34,8 +34,8 @@ struct RegionalSubPageScoutingDataView: View {
     @State var robotHarmony: Bool = false
     
     @State var currentPlayType: String = "auto"
-    @State var qrCodeVisible: Bool = true
-    @State var qrCodeData: String = "2854dagoats"
+    @State var qrCodeVisible: Bool = false
+    @State var qrCodeData: String = ""
     
     var body: some View {
         ScrollView {
@@ -53,11 +53,9 @@ struct RegionalSubPageScoutingDataView: View {
                 Spacer()
             }
             VStack {
-                Button("Toggle QR Code") {
-                    qrCodeVisible.toggle()
-                }
+               
                 if (qrCodeVisible){
-                    QRcodeGenerate(data: qrCodeData)
+                    QRcodeGenerate(data: $qrCodeData)
                 }
             }
             VStack {
@@ -84,6 +82,7 @@ struct RegionalSubPageScoutingDataView: View {
                         return
                     }
                     updateRegionalData()
+                    updateQRCode()
                     //                        ProtoFirebase.teamCollection.document("\(teamNumber)").collection(regionalKey).document(matchKey).collection(newValue).document(currentPlayType).addSnapshotListener { oneDocSnapshot, oneDocError in
                     //                            updateRegionalData()
                     //                        }
@@ -106,6 +105,7 @@ struct RegionalSubPageScoutingDataView: View {
                     guard let teamNumber = ProtoFirebase.currentProtoUser?.teamNum else {
                         return
                     }
+                    updateQRCode()
                     //                        ProtoFirebase.teamCollection.document("\(teamNumber)").collection(regionalKey).document(matchKey).collection(currentSelectedTeam).document(newValue).addSnapshotListener { oneDocSnapshot, oneDocError in
                     //                            updateRegionalData()
                     //                        }
@@ -153,6 +153,7 @@ struct RegionalSubPageScoutingDataView: View {
                             .onChange(of: autoSpeakerNotesMade, perform: { newValue in
                                 
                                 ProtoSheets.setRowTeamNumberData(data: newValue, column: "D", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                updateQRCode()
                                 
                             })
                         }
@@ -173,7 +174,7 @@ struct RegionalSubPageScoutingDataView: View {
                             .padding(.horizontal)
                             .onChange(of: teleopSpeakerNotesMade, perform: { newValue in
                                 ProtoSheets.setRowTeamNumberData(data: newValue, column: "H", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
-                                
+                                updateQRCode()
                                 
                             })
                         }
@@ -198,7 +199,7 @@ struct RegionalSubPageScoutingDataView: View {
                             }
                             .onChange(of: autoSpeakerNotesAttempted, perform: { newValue in
                                 ProtoSheets.setRowTeamNumberData(data: newValue, column: "C", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
-                                
+                                updateQRCode()
                             })
                         }
                         else {
@@ -217,6 +218,7 @@ struct RegionalSubPageScoutingDataView: View {
                             }
                             .onChange(of: teleopSpeakerNotesAttempted, perform: { newValue in
                                 ProtoSheets.setRowTeamNumberData(data: newValue, column: "G", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                updateQRCode()
                             })
                         }
                         
@@ -266,6 +268,8 @@ struct RegionalSubPageScoutingDataView: View {
                             .onChange(of: autoAmpNotesMade, perform: { newValue in
                                 
                                 ProtoSheets.setRowTeamNumberData(data: newValue, column: "F", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                updateQRCode()
+                                
                             })
                         }
                         else {
@@ -286,6 +290,8 @@ struct RegionalSubPageScoutingDataView: View {
                             .onChange(of: teleopAmpNotesMade, perform: { newValue in
                                 
                                 ProtoSheets.setRowTeamNumberData(data: newValue, column: "J", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                updateQRCode()
+                                
                             })
                         }
                         
@@ -309,6 +315,8 @@ struct RegionalSubPageScoutingDataView: View {
                             }
                             .onChange(of: autoAmpNotesAttempted, perform: { newValue in
                                 ProtoSheets.setRowTeamNumberData(data: newValue, column: "E", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                updateQRCode()
+                                
                             })
                         }
                         else {
@@ -326,6 +334,8 @@ struct RegionalSubPageScoutingDataView: View {
                             }
                             .onChange(of: teleopAmpNotesAttempted, perform: { newValue in
                                 ProtoSheets.setRowTeamNumberData(data: newValue, column: "I", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                                updateQRCode()
+                                
                             })
                         }
                         
@@ -362,6 +372,7 @@ struct RegionalSubPageScoutingDataView: View {
                         .padding(.horizontal)
                         .onChange(of: robotCoopertition, perform: { newValue in
                             ProtoSheets.setRowTeamNumberData(data: newValue, column: "P", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                            updateQRCode()
                         })
                         Text("A ROBOT is DOCKED if it is contacting only the CHARGE STATION and/or other items also directly or transitively fully supported by the CHARGE STATION.")
                             .font(.system(size: 13, weight: .regular, design: .rounded))
@@ -383,6 +394,7 @@ struct RegionalSubPageScoutingDataView: View {
                         .padding(.horizontal)
                         .onChange(of: robotHang, perform: { newValue in
                             ProtoSheets.setRowTeamNumberData(data: newValue, column: "L", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                            updateQRCode()
                         })
                         Text("The state of the ROBOT if the following are true: the CHARGE STATION is LEVEL & all ALLIANCE ROBOTS contacting the CHARGE STATION are DOCKED.")
                             .font(.system(size: 13, weight: .regular, design: .rounded))
@@ -405,6 +417,8 @@ struct RegionalSubPageScoutingDataView: View {
                         .padding(.horizontal)
                         .onChange(of: robotAmplify, perform: { newValue in
                             ProtoSheets.setRowTeamNumberData(data: newValue, column: "N", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                            updateQRCode()
+                            
                         })
                         Text("The state of the ROBOT if the following are true: the CHARGE STATION is LEVEL & all ALLIANCE ROBOTS contacting the CHARGE STATION are DOCKED.")
                             .font(.system(size: 13, weight: .regular, design: .rounded))
@@ -427,6 +441,8 @@ struct RegionalSubPageScoutingDataView: View {
                         .padding(.horizontal)
                         .onChange(of: robotHarmony, perform: { newValue in
                             ProtoSheets.setRowTeamNumberData(data: newValue, column: "O", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                            updateQRCode()
+                            
                         })
                         Text("The state of the ROBOT if the following are true: the CHARGE STATION is LEVEL & all ALLIANCE ROBOTS contacting the CHARGE STATION are DOCKED.")
                             .font(.system(size: 13, weight: .regular, design: .rounded))
@@ -451,6 +467,8 @@ struct RegionalSubPageScoutingDataView: View {
                         .onChange(of: robotTrapScore, perform: { newValue in
                             
                             ProtoSheets.setRowTeamNumberData(data: newValue, column: "M", matchNumber: String(matchNumber), teamNumber: currentSelectedTeam.replacingOccurrences(of: "frc", with: ""))
+                            updateQRCode()
+                            
                         })
                         Text("A ROBOT is DOCKED if it is contacting only the CHARGE STATION and/or other items also directly or transitively fully supported by the CHARGE STATION.")
                             .font(.system(size: 13, weight: .regular, design: .rounded))
@@ -497,9 +515,22 @@ struct RegionalSubPageScoutingDataView: View {
             
             
         }
+        .toolbar(content: {
+            ToolbarItem {
+                Button(action: {
+                    updateQRCode()
+                    qrCodeVisible.toggle()
+                } , label: {
+                    Image(systemName: "qrcode")
+                        .foregroundStyle(Color.black)
+                        
+                })
+            }
+        })
         
-        
-        
+    }
+    func updateQRCode() {
+        qrCodeData = "\(matchNumber);\(currentSelectedTeam);\(autoSpeakerNotesMade);\(autoSpeakerNotesAttempted);\(autoAmpNotesMade);\(autoAmpNotesAttempted);\(teleopSpeakerNotesMade);\(teleopSpeakerNotesAttempted);\(teleopAmpNotesMade);\(teleopAmpNotesAttempted);\(robotHang);\(robotTrapScore);\(robotAmplify);\(robotCoopertition);\(robotHarmony)"
     }
     func returnData(str : String)->Data{
         let filter = CIFilter(name: "CIQRCodeGenerator")

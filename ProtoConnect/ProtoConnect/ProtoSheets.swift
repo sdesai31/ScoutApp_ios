@@ -273,6 +273,38 @@ struct ProtoSheets {
             }
         }
     }
+    static func setRowDataTeamNumber(data: [String], matchNumber: String, teamNumber: String) {
+        generateRefreshToken { bearerToken in
+            if let dataBearerToken = bearerToken {
+                
+                checkAvailableRowProtoSheet(bearerToken: dataBearerToken, teamNumber: teamNumber, matchNumber: matchNumber) { teamRowNumber in
+                    if (teamRowNumber == -1) {
+                        return
+                    }
+                    let parameters = "{\n    \"range\": \"\(teamNumber)!A\(teamRowNumber+1):P\(teamRowNumber+1)\",\n    \"majorDimension\": \"ROWS\",\n    \"values\": [\n      \(data)\n    ]\n  }"
+                    let postData = parameters.data(using: .utf8)
+
+                    var request = URLRequest(url: URL(string: "https://sheets.googleapis.com/v4/spreadsheets/\(sheetID)/values/\(teamNumber)!A\(teamRowNumber+1):P\(teamRowNumber+1)?valueInputOption=USER_ENTERED&includeValuesInResponse=false")!,timeoutInterval: Double.infinity)
+                    request.addValue("Bearer \(dataBearerToken)", forHTTPHeaderField: "Authorization")
+                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+                    request.httpMethod = "PUT"
+                    request.httpBody = postData
+
+                    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                      guard let data = data else {
+                        print(String(describing: error))
+                        return
+                      }
+                      print(String(data: data, encoding: .utf8)!)
+                    }
+
+                    task.resume()
+
+                }
+            }
+        }
+    }
     static func setScoutingTeamAssignments(scoutingTeams: [String]) {
         generateRefreshToken { bearerToken in
             if let dataBearerToken = bearerToken {

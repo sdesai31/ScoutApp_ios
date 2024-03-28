@@ -43,6 +43,7 @@
 		02AB5EF129D018370020E3E8 /* LoginOnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AB5EF029D018370020E3E8 /* LoginOnboardView.swift */; };
 		02AB5EF329D019640020E3E8 /* ProtoLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AB5EF229D019640020E3E8 /* ProtoLookup.swift */; };
 		02AB5EF629D0C67C0020E3E8 /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 02AB5EF529D0C67C0020E3E8 /* SimpleToast */; };
+		02B908032BB5D96B00AB1529 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 02B908022BB5D96B00AB1529 /* CodeScanner */; };
 		02F33EC129D13D7900312CB3 /* HomeSubpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F33EC029D13D7900312CB3 /* HomeSubpage.swift */; };
 		02F33EC329D13F9700312CB3 /* ScoutingSubpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F33EC229D13F9700312CB3 /* ScoutingSubpage.swift */; };
 		02F33EC829D201C000312CB3 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 02F33EC729D201C000312CB3 /* ActivityIndicatorView */; };
@@ -124,6 +125,7 @@
 				02135D1529D77EE00061E51D /* FirebaseAnalyticsSwift in Frameworks */,
 				022F0CB629DA266F00B84C24 /* IrregularGradient in Frameworks */,
 				02135D1F29D77EE00061E51D /* FirebaseFirestoreSwift in Frameworks */,
+				02B908032BB5D96B00AB1529 /* CodeScanner in Frameworks */,
 				023A028F29CE2A00007935CA /* Neumorphic in Frameworks */,
 				02135D1B29D77EE00061E51D /* FirebaseDatabaseSwift in Frameworks */,
 				02405DE729D7807400FFEB4E /* GoogleSignInSwift in Frameworks */,
@@ -281,6 +283,7 @@
 				02405DE429D7807400FFEB4E /* GoogleSignIn */,
 				02405DE629D7807400FFEB4E /* GoogleSignInSwift */,
 				022F0CB529DA266F00B84C24 /* IrregularGradient */,
+				02B908022BB5D96B00AB1529 /* CodeScanner */,
 			);
 			productName = ProtoConnect;
 			productReference = 025A293A29CE0F9D007223C0 /* ProtoConnect.app */;
@@ -366,6 +369,7 @@
 				02135D1129D77EE00061E51D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				02405DE329D7807400FFEB4E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				022F0CB429DA266F00B84C24 /* XCRemoteSwiftPackageReference "IrregularGradient" */,
+				02B908012BB5D96B00AB1529 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 025A293B29CE0F9D007223C0 /* Products */;
 			projectDirPath = "";
@@ -905,6 +909,14 @@
 				minimumVersion = 0.6.2;
 			};
 		};
+		02B908012BB5D96B00AB1529 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
 		02F33EC629D201C000312CB3 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/ActivityIndicatorView.git";
@@ -993,6 +1005,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02AB5EF429D0C67C0020E3E8 /* XCRemoteSwiftPackageReference "SimpleToast" */;
 			productName = SimpleToast;
+		};
+		02B908022BB5D96B00AB1529 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02B908012BB5D96B00AB1529 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 		02F33EC729D201C000312CB3 /* ActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;

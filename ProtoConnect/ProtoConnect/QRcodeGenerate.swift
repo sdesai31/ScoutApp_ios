@@ -11,10 +11,10 @@ import CoreImage.CIFilterBuiltins
 
 struct QRcodeGenerate: View {
     let filter = CIFilter.qrCodeGenerator()
-    var data: String
+    @Binding var data: String
     let contex = CIContext()
     
-    var body: some View{
+    var body: some View {
         Image(uiImage: qrGenerate(data))
             .interpolation(.none)
             .resizable()

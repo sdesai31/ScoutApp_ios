@@ -9,6 +9,7 @@ import SwiftUI
 import FancyScrollView
 import MapKit
 import CoreLocation
+import CodeScanner
 
 struct RegionalSubPageView: View {
     
@@ -19,6 +20,7 @@ struct RegionalSubPageView: View {
     @State var filteredProtoMatches: [[String:Any]] = []
     @State var finalAssignments: [String] = []
     @State var searchBarProto: String = ""
+    @State var scouterScanner = false
     
     var body: some View {
         VStack {
@@ -56,6 +58,22 @@ struct RegionalSubPageView: View {
                         .padding(.vertical, 20)
                         .padding(.horizontal)
                         .background(RoundedRectangle(cornerRadius: 30).stroke(Color.black, lineWidth: 2).foregroundColor(.clear))
+                        Button {
+                            scouterScanner = true
+                        } label: {
+                       
+                            HStack {
+                              
+                                Text("Scan Scouters Data")
+                                    .foregroundColor(.black)
+                                    .bold()
+                            }
+                            .padding(.horizontal)
+                        }
+                        
+                        .padding(.vertical, 20)
+                        .padding(.horizontal)
+                        .background(RoundedRectangle(cornerRadius: 30).stroke(Color.black, lineWidth: 2).foregroundColor(.clear))
 
                     }
                     ForEach(0..<filteredProtoMatches.count, id: \.self) { oneProtoMatch in
@@ -70,6 +88,20 @@ struct RegionalSubPageView: View {
             }
             
         }
+        .sheet(isPresented: $scouterScanner, content: {
+            CodeScannerView(codeTypes: [.qr], scanMode: .once) { scanResult in
+                do {
+                    let codeScanned = try scanResult.get().string
+                    var codeComps = codeScanned.components(separatedBy: ";")
+                    let matchNum = codeComps.removeFirst()
+                    let teamNum = codeComps.removeFirst()
+                    ProtoSheets.setRowDataTeamNumber(data: codeComps, matchNumber: matchNum, teamNumber: teamNum)
+                }
+                catch {
+                    print(error)
+                }
+            }
+        })
         .onChange(of: searchBarProto, perform: { newValue in
             if newValue.isEmpty {
                 filteredProtoMatches = ProtoLookup.specificCompProtoMatches
