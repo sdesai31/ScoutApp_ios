@@ -13,7 +13,11 @@ struct ProtoSheets {
     
     
     static func generateRefreshToken(completion: @escaping ((String?) -> ())) {
-        let parameters = "client_id=732669493855-3fgtbnubtnk35n62sjtboed4sk14erhh.apps.googleusercontent.com&client_secret=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&refresh_token=1%2F%2F06JwEdwYddtR2CgYIARAAGAYSNwF-L9IrqSHpnyVaP_k7bU2bAQ0WrWEevu44sn1TprgQ86G3MJF3LOYXXhP6uHuvEqDcXvpqps0%0A&grant_type=refresh_token"
+        // Fixme - SD changed here to avoid push security error
+        // let parameters = "client_id=732669493855"
+        let parameters = "client_id=732669493855-3fgtbnubtnk35n62sjtboed4sk14erhh.apps.googleusercontent.com&refresh_token=1%2F%2F06JwEdwYddtR2CgYIARAAGAYSNwF-L9IrqSHpnyVaP_k7bU2bAQ0WrWEevu44sn1TprgQ86G3MJF3LOYXXhP6uHuvEqDcXvpqps0%0A&grant_type=refresh_token"
+
+
         let postData =  parameters.data(using: .utf8)
         
         var request = URLRequest(url: URL(string: "https://oauth2.googleapis.com/token")!,timeoutInterval: Double.infinity)
